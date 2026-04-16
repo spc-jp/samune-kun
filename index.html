@@ -8,35 +8,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold:        #D0A900;
-    --gold-dark:   #C39000;
-    --gold-pale:   #FFF9E6;
-    --gold-mid:    #f0d060;
-    --black:       #000000;
-    --text:        #1a1200;
-    --text-muted:  #7a6830;
-    --bg:          #FFF9E6;
-    --bg-card:     #FFFFFF;
-    --bg-card2:    #fffef8;
-    --border:      #e8d88a;
-    --border-soft: #f0e8b0;
-    --radius:      12px;
-    --mono:        'DM Mono', monospace;
-    --sans:        'Zen Kaku Gothic New', sans-serif;
-    --shadow:      0 2px 12px rgba(208,169,0,0.12);
-    --shadow-md:   0 4px 24px rgba(208,169,0,0.18);
+    --green-deep:   #1a5c3a;
+    --green-main:   #2e8b57;
+    --green-mid:    #3aaa6e;
+    --green-light:  #5ecb8e;
+    --green-pale:   #e8f7ee;
+    --green-bg:     #f2faf5;
+    --white:        #ffffff;
+    --text:         #1a3028;
+    --text-muted:   #4a7a60;
+    --border:       #b0dcc0;
+    --border-soft:  #d4eedd;
+    --radius:       14px;
+    --mono:         'DM Mono', monospace;
+    --sans:         'Zen Kaku Gothic New', sans-serif;
+    --shadow:       0 2px 14px rgba(46,139,87,0.13);
+    --shadow-md:    0 4px 28px rgba(46,139,87,0.18);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    background: var(--bg);
+    background: var(--green-bg);
     color: var(--text);
     font-family: var(--sans);
     min-height: 100vh;
     padding: 0 0 80px;
+    font-size: 16px;
   }
+
+  /* ── ヘッダー ── */
   header {
-    background: linear-gradient(135deg, #1a1200 0%, #2a2000 50%, #1a1200 100%);
-    padding: 32px 24px 28px;
+    background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-main) 60%, var(--green-mid) 100%);
+    padding: 36px 24px 30px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -44,146 +46,259 @@
   header::before {
     content: '';
     position: absolute;
-    top: -60px; left: 50%; transform: translateX(-50%);
-    width: 600px; height: 280px;
-    background: radial-gradient(ellipse, rgba(208,169,0,0.28) 0%, transparent 70%);
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.12) 0%, transparent 70%);
     pointer-events: none;
   }
   header::after {
     content: '';
     position: absolute;
-    bottom: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, transparent, var(--gold), #FFF9E6, var(--gold), transparent);
+    bottom: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, transparent, #a0e8c0, #ffffff, #a0e8c0, transparent);
   }
   .header-badge {
     display: inline-block;
-    background: rgba(208,169,0,0.15);
-    border: 1px solid rgba(208,169,0,0.5);
-    color: var(--gold);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    padding: 4px 14px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.45);
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    padding: 5px 16px;
     border-radius: 20px;
     margin-bottom: 14px;
     font-family: var(--mono);
   }
-  h1 { font-size: clamp(24px, 6vw, 36px); font-weight: 900; color: #FFFFFF; line-height: 1.2; }
+  h1 {
+    font-size: clamp(26px, 6vw, 38px);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
   h1 span {
-    background: linear-gradient(90deg, var(--gold), var(--gold-mid), var(--gold-dark));
+    background: linear-gradient(90deg, #c8f5da, #ffffff, #c8f5da);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .header-sub { margin-top: 10px; color: rgba(255,249,230,0.6); font-size: 13px; }
+  .header-sub {
+    margin-top: 10px;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── メイン ── */
   .main { max-width: 760px; margin: 0 auto; padding: 32px 16px 0; }
+
+  /* ── セクションラベル ── */
   .section-label {
-    font-size: 11px; letter-spacing: 0.14em; color: var(--gold-dark);
-    font-family: var(--mono); margin-bottom: 10px; text-transform: uppercase; font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--green-main);
+    font-family: var(--mono);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
   }
+
+  /* ── カード ── */
   .card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 24px; margin-bottom: 16px; box-shadow: var(--shadow);
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 26px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
   }
-  .field { margin-bottom: 18px; }
+
+  /* ── 入力フィールド ── */
+  .field { margin-bottom: 20px; }
   .field:last-child { margin-bottom: 0; }
-  label { display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
-  label .req { color: var(--gold-dark); margin-left: 4px; }
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 7px;
+  }
+  label .req { color: #e05a2b; margin-left: 4px; }
   input[type="text"], textarea {
-    width: 100%; background: var(--bg); border: 1px solid var(--border);
-    border-radius: 8px; color: var(--text); font-family: var(--sans);
-    font-size: 15px; padding: 12px 14px; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    background: var(--green-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 9px;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    padding: 13px 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
   input[type="text"]:focus, textarea:focus {
-    border-color: var(--gold); box-shadow: 0 0 0 3px rgba(208,169,0,0.14);
+    border-color: var(--green-main);
+    box-shadow: 0 0 0 3px rgba(46,139,87,0.15);
+    background: #ffffff;
   }
-  textarea { resize: vertical; min-height: 70px; }
-  ::placeholder { color: #c8b870; font-size: 13px; }
-  .btn-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  textarea { resize: vertical; min-height: 74px; }
+  ::placeholder { color: #8abba0; font-size: 14px; }
+
+  /* ── ボタングループ ── */
+  .btn-group { display: flex; flex-wrap: wrap; gap: 9px; }
   .btn-choice {
-    background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
-    color: var(--text-muted); cursor: pointer; font-family: var(--sans);
-    font-size: 13px; padding: 8px 14px; transition: all 0.15s; user-select: none;
+    background: var(--green-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 9px;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 14px;
+    padding: 9px 15px;
+    transition: all 0.15s;
+    user-select: none;
+    line-height: 1.3;
   }
-  .btn-choice:hover { border-color: var(--gold); color: var(--gold-dark); background: var(--gold-pale); }
-  .btn-choice.active { background: var(--gold); border-color: var(--gold-dark); color: var(--black); font-weight: 700; }
-  .divider { height: 1px; background: var(--border-soft); margin: 20px 0; }
+  .btn-choice:hover {
+    border-color: var(--green-main);
+    color: var(--green-deep);
+    background: var(--green-pale);
+  }
+  .btn-choice.active {
+    background: linear-gradient(135deg, var(--green-main), var(--green-mid));
+    border-color: var(--green-main);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(46,139,87,0.3);
+  }
+
+  /* ── 仕切り線 ── */
+  .divider { height: 1.5px; background: var(--border-soft); margin: 22px 0; }
+
+  /* ── 生成ボタン ── */
   .generate-btn {
     width: 100%;
-    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-mid), var(--gold), var(--gold-dark));
-    background-size: 200% 100%; border: none; border-radius: var(--radius); color: var(--black);
-    cursor: pointer; font-family: var(--sans); font-size: 16px; font-weight: 900;
-    letter-spacing: 0.06em; padding: 18px; transition: background-position 0.4s, transform 0.15s;
-    margin-bottom: 24px; box-shadow: 0 4px 20px rgba(208,169,0,0.35);
+    background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-main) 50%, var(--green-mid) 100%);
+    background-size: 200% 100%;
+    border: none;
+    border-radius: var(--radius);
+    color: #ffffff;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    padding: 20px;
+    transition: background-position 0.4s, transform 0.15s, box-shadow 0.2s;
+    margin-bottom: 26px;
+    box-shadow: 0 4px 20px rgba(46,139,87,0.35);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
-  .generate-btn:hover { background-position: right center; transform: translateY(-2px); box-shadow: 0 6px 28px rgba(208,169,0,0.45); }
+  .generate-btn:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 28px rgba(46,139,87,0.45);
+  }
   .generate-btn:active { transform: translateY(0); }
+
+  /* ── 出力エリア ── */
   #output-area { display: none; }
   #output-area.visible { display: block; }
-  .output-label { font-size: 11px; letter-spacing: 0.14em; color: var(--gold-dark); font-family: var(--mono); margin-bottom: 10px; text-transform: uppercase; }
+  .output-label { font-size: 12px; letter-spacing: 0.12em; color: var(--green-main); font-family: var(--mono); margin-bottom: 10px; text-transform: uppercase; font-weight: 700; }
+
+  /* ── タブ ── */
   .tab-wrap { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); }
-  .tabs { display: flex; border-bottom: 2px solid var(--border); background: var(--bg-card2); }
+  .tabs { display: flex; border-bottom: 2px solid var(--border); background: var(--green-pale); }
   .tab-btn {
     background: none; border: none; border-bottom: 3px solid transparent;
     color: var(--text-muted); cursor: pointer; font-family: var(--sans);
-    font-size: 13px; font-weight: 700; padding: 12px 20px; transition: all 0.15s; margin-bottom: -2px;
+    font-size: 14px; font-weight: 700; padding: 13px 22px;
+    transition: all 0.15s; margin-bottom: -2px;
   }
-  .tab-btn.active { border-bottom-color: var(--gold); color: var(--gold-dark); }
+  .tab-btn.active { border-bottom-color: var(--green-main); color: var(--green-deep); }
   .tab-pane { display: none; }
   .tab-pane.active { display: block; }
-  .prompt-box { background: #fffef5; border: 1px solid var(--border); border-top: none; padding: 20px; }
+
+  /* ── プロンプト出力 ── */
+  .prompt-box { background: #ffffff; border: 1.5px solid var(--border); border-top: none; padding: 22px; }
   .prompt-text {
-    font-family: var(--mono); font-size: 13px; line-height: 1.8; color: #3a2e00;
-    white-space: pre-wrap; word-break: break-all; margin-bottom: 16px; min-height: 80px;
-    background: var(--bg); border: 1px solid var(--border-soft); border-radius: 8px; padding: 14px;
+    font-family: var(--mono);
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: var(--text);
+    white-space: pre-wrap;
+    word-break: break-all;
+    margin-bottom: 18px;
+    min-height: 90px;
+    background: var(--green-bg);
+    border: 1.5px solid var(--border-soft);
+    border-radius: 9px;
+    padding: 16px;
   }
   .copy-btn {
-    background: var(--gold); border: none; border-radius: 8px; color: var(--black);
-    cursor: pointer; font-family: var(--sans); font-size: 12px; font-weight: 700;
-    padding: 8px 18px; transition: all 0.2s; box-shadow: 0 2px 8px rgba(208,169,0,0.3);
+    background: linear-gradient(135deg, var(--green-main), var(--green-mid));
+    border: none; border-radius: 9px; color: #ffffff;
+    cursor: pointer; font-family: var(--sans); font-size: 14px; font-weight: 700;
+    padding: 10px 22px; transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(46,139,87,0.3);
   }
-  .copy-btn:hover { background: var(--gold-dark); }
+  .copy-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* ── ヒントボックス ── */
   .hint-box {
-    background: #FFFFFF; border: 1px solid var(--border); border-left: 4px solid var(--gold);
-    border-radius: 8px; padding: 14px 16px; margin-top: 16px; font-size: 12px;
-    color: var(--text-muted); line-height: 1.8; box-shadow: var(--shadow);
+    background: #ffffff; border: 1.5px solid var(--border);
+    border-left: 5px solid var(--green-main);
+    border-radius: 9px; padding: 16px 18px; margin-top: 18px;
+    font-size: 13px; color: var(--text-muted); line-height: 1.9;
+    box-shadow: var(--shadow);
   }
-  .hint-box strong { color: var(--gold-dark); }
-  footer { text-align: center; color: var(--text-muted); font-size: 11px; margin-top: 48px; font-family: var(--mono); letter-spacing: 0.08em; }
-  footer span { color: var(--gold-dark); font-weight: 700; }
+  .hint-box strong { color: var(--green-deep); }
+
+  /* ── フッター ── */
+  footer {
+    text-align: center; color: var(--text-muted); font-size: 12px;
+    margin-top: 52px; font-family: var(--mono); letter-spacing: 0.08em;
+  }
+  footer span { color: var(--green-main); font-weight: 700; }
 
   /* ── コピー確認モーダル ── */
   .modal-overlay {
     display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.55); z-index: 999;
+    background: rgba(0,0,0,0.5); z-index: 999;
     align-items: center; justify-content: center; padding: 16px;
   }
   .modal-overlay.open { display: flex; }
   .modal {
-    background: #FFFFFF; border: 2px solid var(--gold); border-radius: 16px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.3); max-width: 600px; width: 100%; padding: 24px;
+    background: #ffffff;
+    border: 2.5px solid var(--green-main);
+    border-radius: 18px;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.25);
+    max-width: 620px; width: 100%; padding: 28px;
   }
-  .modal-title { font-size: 15px; font-weight: 900; color: var(--gold-dark); margin-bottom: 4px; }
-  .modal-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
+  .modal-title { font-size: 17px; font-weight: 900; color: var(--green-deep); margin-bottom: 5px; }
+  .modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6; }
   .modal-textarea {
-    width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
-    color: #3a2e00; font-family: var(--mono); font-size: 12px; line-height: 1.8;
-    padding: 12px; resize: none; height: 220px; outline: none;
+    width: 100%; background: var(--green-bg); border: 1.5px solid var(--border);
+    border-radius: 9px; color: var(--text); font-family: var(--mono);
+    font-size: 13px; line-height: 1.8; padding: 14px; resize: none; height: 230px; outline: none;
   }
-  .modal-textarea:focus { border-color: var(--gold); }
-  .modal-actions { display: flex; gap: 10px; margin-top: 14px; justify-content: flex-end; flex-wrap: wrap; }
+  .modal-textarea:focus { border-color: var(--green-main); }
+  .modal-actions { display: flex; gap: 10px; margin-top: 16px; justify-content: flex-end; flex-wrap: wrap; }
   .modal-copy-btn {
-    background: var(--gold); border: none; border-radius: 8px; color: var(--black);
-    cursor: pointer; font-family: var(--sans); font-size: 14px; font-weight: 900;
-    padding: 10px 24px; transition: background 0.2s;
+    background: linear-gradient(135deg, var(--green-main), var(--green-mid));
+    border: none; border-radius: 9px; color: #ffffff;
+    cursor: pointer; font-family: var(--sans); font-size: 15px; font-weight: 900;
+    padding: 11px 28px; transition: all 0.2s;
+    box-shadow: 0 2px 10px rgba(46,139,87,0.35);
   }
-  .modal-copy-btn:hover { background: var(--gold-dark); }
-  .modal-copy-btn.done { background: #6ab04c; color: #fff; }
+  .modal-copy-btn:hover { opacity: 0.88; }
+  .modal-copy-btn.done { background: #4caf50; }
   .modal-close-btn {
-    background: none; border: 1px solid var(--border); border-radius: 8px;
+    background: none; border: 1.5px solid var(--border); border-radius: 9px;
     color: var(--text-muted); cursor: pointer; font-family: var(--sans);
-    font-size: 14px; padding: 10px 20px; transition: border-color 0.2s;
+    font-size: 15px; padding: 11px 22px; transition: border-color 0.2s;
   }
-  .modal-close-btn:hover { border-color: var(--gold); color: var(--gold-dark); }
+  .modal-close-btn:hover { border-color: var(--green-main); color: var(--green-deep); }
 </style>
 </head>
 <body>
@@ -192,7 +307,7 @@
 <div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
   <div class="modal">
     <p class="modal-title">📋 プロンプトを確認・コピー</p>
-    <p class="modal-sub">下のテキストを確認してから「全選択してコピー」を押してください</p>
+    <p class="modal-sub">内容を確認してから「全選択してコピー」を押してください。<br>そのままMidJourneyの /imagine に貼り付けてご使用ください。</p>
     <textarea class="modal-textarea" id="modal-text" readonly></textarea>
     <div class="modal-actions">
       <button class="modal-close-btn" onclick="closeModal()">閉じる</button>
@@ -255,12 +370,12 @@
   <p class="section-label">📐 STEP 3｜使う媒体を選ぶ</p>
   <div class="card">
     <div class="btn-group" id="media-group">
-      <button class="btn-choice active" data-val="--ar 16:9" data-name="YouTube（16:9）">📺 YouTube</button>
-      <button class="btn-choice" data-val="--ar 1:1" data-name="Instagram正方形（1:1）">📸 Instagram正方形</button>
-      <button class="btn-choice" data-val="--ar 9:16" data-name="Reels・縦型（9:16）">📱 リール・縦型</button>
-      <button class="btn-choice" data-val="--ar 1.91:1" data-name="note・OGP（1.91:1）">📝 note・OGP</button>
-      <button class="btn-choice" data-val="--ar 2:1" data-name="LINEバナー（2:1）">💬 LINEバナー</button>
-      <button class="btn-choice" data-val="--ar 4:3" data-name="プレゼン・資料（4:3）">📊 プレゼン・資料</button>
+      <button class="btn-choice active" data-val="--ar 16:9">📺 YouTube</button>
+      <button class="btn-choice" data-val="--ar 1:1">📸 Instagram正方形</button>
+      <button class="btn-choice" data-val="--ar 9:16">📱 リール・縦型</button>
+      <button class="btn-choice" data-val="--ar 1.91:1">📝 note・OGP</button>
+      <button class="btn-choice" data-val="--ar 2:1">💬 LINEバナー</button>
+      <button class="btn-choice" data-val="--ar 4:3">📊 プレゼン・資料</button>
     </div>
   </div>
 
@@ -277,7 +392,7 @@
     <p class="output-label">🎯 OUTPUT｜生成されたプロンプト</p>
     <div class="tab-wrap">
       <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab('mj', this)">🟡 MidJourney V8</button>
+        <button class="tab-btn active" onclick="switchTab('mj', this)">🟢 MidJourney V8</button>
         <button class="tab-btn" onclick="switchTab('niji', this)">🟣 Nijijourney</button>
       </div>
       <div id="tab-mj" class="tab-pane active">
@@ -308,7 +423,6 @@
 </div>
 
 <script>
-  // ── ボタングループ初期化 ──
   function initGroup(id) {
     document.querySelectorAll(`#${id} .btn-choice`).forEach(btn => {
       btn.addEventListener('click', () => {
@@ -326,7 +440,6 @@
     return el ? el.dataset.val : '';
   }
 
-  // ── プロンプト生成 ──
   function generate() {
     const appName   = document.getElementById('app-name').value.trim();
     const appUrl    = document.getElementById('app-url').value.trim();
@@ -363,7 +476,6 @@ ${ar} --niji 6 --stylize 400`;
     setTimeout(() => out.scrollIntoView({ behavior:'smooth', block:'start' }), 50);
   }
 
-  // ── 翻訳ヘルパー ──
   function translateCatch(text) {
     const map = [
       ['入力するだけ','just type and done'],['プロ品質','professional quality'],
@@ -377,6 +489,7 @@ ${ar} --niji 6 --stylize 400`;
     map.forEach(([ja,en]) => { if(text.includes(ja)) r = en; });
     return `concept keywords: ${r}`;
   }
+
   function translateMemo(text) {
     const map = [
       ['驚き','surprise expression, wow reaction'],['信頼感','trustworthy, reliable atmosphere'],
@@ -389,7 +502,6 @@ ${ar} --niji 6 --stylize 400`;
     return r;
   }
 
-  // ── タブ切り替え ──
   function switchTab(id, btn) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
@@ -397,7 +509,6 @@ ${ar} --niji 6 --stylize 400`;
     btn.classList.add('active');
   }
 
-  // ── コピーモーダル ──
   function openModal(promptId) {
     const text = document.getElementById(promptId).textContent;
     document.getElementById('modal-text').value = text;
@@ -405,7 +516,6 @@ ${ar} --niji 6 --stylize 400`;
     btn.textContent = '📋 全選択してコピー';
     btn.classList.remove('done');
     document.getElementById('modal-overlay').classList.add('open');
-    // テキストエリアを全選択しておく
     setTimeout(() => {
       const ta = document.getElementById('modal-text');
       ta.focus();
@@ -424,19 +534,13 @@ ${ar} --niji 6 --stylize 400`;
   function doCopy() {
     const ta = document.getElementById('modal-text');
     ta.select();
-    ta.setSelectionRange(0, 99999); // スマホ対応
-
-    // クリップボードAPI（モダンブラウザ）
+    ta.setSelectionRange(0, 99999);
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(ta.value).then(() => {
-        showCopied();
-      }).catch(() => {
-        // フォールバック
+      navigator.clipboard.writeText(ta.value).then(showCopied).catch(() => {
         document.execCommand('copy');
         showCopied();
       });
     } else {
-      // 旧ブラウザフォールバック
       document.execCommand('copy');
       showCopied();
     }
