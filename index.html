@@ -159,6 +159,22 @@
     user-select: none;
     line-height: 1.3;
   }
+  /* 媒体ボタン：アスペクト比を小さく2行表示 */
+  .btn-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 10px 14px;
+  }
+  .btn-media .btn-label { font-size: 14px; font-weight: 700; }
+  .btn-media .btn-ar {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+  .btn-choice.active .btn-ar { color: rgba(255,255,255,0.8); }
   .btn-choice:hover {
     border-color: var(--green-main);
     color: var(--green-deep);
@@ -352,6 +368,7 @@
         <button class="btn-choice" data-val="elegant, luxury, gold tone, dark background, premium">高級・ラグジュアリー</button>
         <button class="btn-choice" data-val="retro, vintage, 80s, nostalgic">レトロ・ヴィンテージ</button>
         <button class="btn-choice" data-val="anime style, illustrated, soft color">アニメ・イラスト系</button>
+        <button class="btn-choice" data-val="Studio Ghibli style, manga illustration, hand-drawn, watercolor, soft pastel, whimsical, Hayao Miyazaki inspired, detailed background, warm atmosphere">ジブリ・漫画風</button>
       </div>
     </div>
     <div class="divider"></div>
@@ -361,8 +378,8 @@
         <button class="btn-choice active" data-val="no people, object focused, clean background">人物なし（物・抽象）</button>
         <button class="btn-choice" data-val="confident Japanese business person, smiling, mid 40s">ビジネスパーソン</button>
         <button class="btn-choice" data-val="friendly cute character, mascot style">キャラクター・マスコット</button>
-        <button class="btn-choice" data-val="young Japanese woman, cheerful expression">女性（明るい）</button>
-        <button class="btn-choice" data-val="middle-aged Japanese man, trustworthy smile">男性（信頼感）</button>
+        <button class="btn-choice" data-val="young Japanese woman, cheerful expression, Japanese facial features, natural makeup, friendly smile">女性（明るい・日本人）</button>
+        <button class="btn-choice" data-val="middle-aged Japanese man, trustworthy smile, Japanese facial features, professional appearance">男性（信頼感・日本人）</button>
       </div>
     </div>
   </div>
@@ -370,12 +387,30 @@
   <p class="section-label">📐 STEP 3｜使う媒体を選ぶ</p>
   <div class="card">
     <div class="btn-group" id="media-group">
-      <button class="btn-choice active" data-val="--ar 16:9">📺 YouTube</button>
-      <button class="btn-choice" data-val="--ar 1:1">📸 Instagram正方形</button>
-      <button class="btn-choice" data-val="--ar 9:16">📱 リール・縦型</button>
-      <button class="btn-choice" data-val="--ar 1.91:1">📝 note・OGP</button>
-      <button class="btn-choice" data-val="--ar 2:1">💬 LINEバナー</button>
-      <button class="btn-choice" data-val="--ar 4:3">📊 プレゼン・資料</button>
+      <button class="btn-choice btn-media active" data-val="--ar 16:9">
+        <span class="btn-label">📺 YouTube</span>
+        <span class="btn-ar">16:9（横長）</span>
+      </button>
+      <button class="btn-choice btn-media" data-val="--ar 1:1">
+        <span class="btn-label">📸 Instagram正方形</span>
+        <span class="btn-ar">1:1（正方形）</span>
+      </button>
+      <button class="btn-choice btn-media" data-val="--ar 9:16">
+        <span class="btn-label">📱 リール・縦型</span>
+        <span class="btn-ar">9:16（縦長）</span>
+      </button>
+      <button class="btn-choice btn-media" data-val="--ar 1.91:1">
+        <span class="btn-label">📝 note・OGP</span>
+        <span class="btn-ar">1.91:1（横長）</span>
+      </button>
+      <button class="btn-choice btn-media" data-val="--ar 2:1">
+        <span class="btn-label">💬 LINEバナー</span>
+        <span class="btn-ar">2:1（横長）</span>
+      </button>
+      <button class="btn-choice btn-media" data-val="--ar 4:3">
+        <span class="btn-label">📊 プレゼン・資料</span>
+        <span class="btn-ar">4:3（スライド）</span>
+      </button>
     </div>
   </div>
 
